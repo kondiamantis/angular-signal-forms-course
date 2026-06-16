@@ -48,4 +48,26 @@
     <p>errors: {{ form.email().errors() | json }}</p>
   </div>
 
+  <div class="field-debug">
+    <p>Password field state</p>
+    <p>value: {{ form.password().value() }}</p>
+    <p>touched: {{ form.password().touched() }}</p>
+    <p>dirty: {{ form.password().dirty() }}</p>
+    <p>valid: {{ form.password().valid() }}</p>
+    <p>invalid: {{ form.password().invalid() }}</p>
+    <p>pending: {{ form.password().pending() }}</p>
+    <p>errors: {{ form.password().errors() | json }}</p>
+  </div>
+
+  <div class="field-debug">
+    <p>Form state</p>
+    <p>value: {{ form().value() | json }}</p>
+    <p>touched: {{ form().touched() }}</p>
+    <p>dirty: {{ form().dirty() }}</p>
+    <p>valid: {{ form().valid() }}</p>
+    <p>invalid: {{ form().invalid() }}</p>
+    <p>pending: {{ form().pending() }}</p>
+    <p>errors: {{ form().errors() | json }}</p>
+  </div>
+
 </div>

@@ -16,7 +16,14 @@ export class LoginComponent {
 
   loginModel = signal({...LOGIN_FORM_DEFAULT});
 
-  form = form(this.loginModel);
+  form = form(
+    this.loginModel,
+    (path) => {
+      required(path.email, {message: "Email  is required."});
+      email(path.email, { message: 'Enter a valid email address.' })  ;
+      required(path.password, { message: 'Password is required.' });
+      minLength(path.password, 8, { message: 'Password must be at least 8 characters.' });
+    });
 
   constructor() {
     effect(() => console.log(this.loginModel()))
