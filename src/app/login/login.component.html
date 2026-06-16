@@ -27,7 +27,8 @@
           <sign-in-icon />
           Sign in
         </button>
-        <button class="btn-reset" type="button">
+        <button (click)="form().reset()"
+          class="btn-reset" type="button">
           <reset-icon />
           Reset
         </button>
@@ -36,12 +37,6 @@
 
   </div>
 
-
-
-
-
-
-  <!--
   <div class="field-debug">
     <p>Email field state</p>
     <p>value: {{ form.email().value() }}</p>
@@ -52,7 +47,5 @@
     <p>pending: {{ form.email().pending() }}</p>
     <p>errors: {{ form.email().errors() | json }}</p>
   </div>
-
-  -->
 
 </div>
