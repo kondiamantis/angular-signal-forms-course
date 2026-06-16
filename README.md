@@ -1,11 +1,13 @@
 
-## Angular Forms In Depth
+## Angular Forms In Depth (Signals Edition)
 
-This repository contains the code of the [Angular Forms In Depth](https://angular-university.io/course/angular-forms-course) video course.
+This repository contains the code of the [Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) video course.
 
-This course repository is updated to Angular v22:
+This course repository is updated to Angular v22, and uses the new Angular Signal Forms API (`@angular/forms/signals`).
 
-![Angular Forms In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-forms-course-small.jpg)
+![Angular Forms In Depth - Signals Edition](https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-forms-in-depth.jpg)
+
+> **Looking for the previous version of this course?** The original Angular Forms In Depth course covering template-driven and reactive forms is available at [angular-university.io/course/angular-forms-course](https://angular-university.io/course/angular-forms-course), with its own repository at [github.com/angular-university/angular-forms-course](https://github.com/angular-university/angular-forms-course).
 
 # Installation pre-requisites
 
@@ -20,19 +22,13 @@ With the following command the angular-cli will be installed globally in your ma
 
 # How To install this repository
 
-We can install the master branch using the following commands:
+We can install the main branch using the following commands:
 
-    git clone https://github.com/angular-university/angular-forms-course.git
+    git clone https://github.com/angular-university/angular-signal-forms-course.git
     
-This repository is made of several separate npm modules, that are installable separately. For example, to run the au-input module, we can do the following:
-    
-    cd angular-forms-course
+    cd angular-signal-forms-course
 
     npm install
-
-Its also possible to install the modules as usual using npm:
-
-    npm install 
 
 This should take a couple of minutes. If there are issues, please post the complete error message in the Questions section of the course.
 
@@ -58,17 +54,15 @@ The application is visible at port 4200: [http://localhost:4200](http://localhos
 
 This repository has multiple branches, have a look at the beginning of each section to see the name of the branch.
 
-At certain points along the course, you will be asked to checkout other remote branches other than master. You can view all branches that you have available remotely using the following command:
+At certain points along the course, you will be asked to checkout other remote branches other than main. You can view all branches that you have available remotely using the following command:
 
     git branch -a
 
-  The remote branches have their starting in origin, such as for example 1-navigation-and-containers.
-
 We can checkout the remote branch and start tracking it with a local branch that has the same name, by using the following command:
 
-      git checkout -b section-1 origin/1-navigation-and-containers
+      git checkout -b section-1 origin/1-signal-forms-basics
 
-It's also possible to download a ZIP file for a given branch,  using the branch dropdown on this page on the top left, and then selecting the Clone or Download / Download as ZIP button.
+It's also possible to download a ZIP file for a given branch, using the branch dropdown on this page on the top left, and then selecting the Clone or Download / Download as ZIP button.
 
 # Angular University Courses
 
@@ -116,9 +110,15 @@ Here is a list of all the courses of the Angular University.
 
 <img src="https://s3-us-west-1.amazonaws.com/angular-university/course-images/rxjs-in-practice-course.png" width="400" alt="RxJs In Practice">
 
+## Angular Forms In Depth (Signals Edition)
+
+[Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) — Build complex enterprise data forms with Angular Signal Forms.
+
+<img src="https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-forms-in-depth.jpg" width="400" alt="Angular Forms In Depth - Signals Edition">
+
 ## Angular Forms In Depth
 
-[Angular Forms In Depth](https://angular-university.io/course/angular-forms-course) — Build complex enterprise data forms with the powerful Angular Forms module.
+[Angular Forms In Depth](https://angular-university.io/course/angular-forms-course) — Build complex enterprise data forms with template-driven and reactive forms.
 
 <img src="https://angular-university.s3-us-west-1.amazonaws.com/course-images/angular-forms-course-small.jpg" width="400" alt="Angular Forms In Depth">
 
@@ -269,4 +269,3 @@ These courses are archived and replaced with newer versions, but are still acces
 [The Complete Typescript Course](https://angular-university.io/course/typescript-2-tutorial) — Complete Guide to Typescript From Scratch: Learn the language in-depth and use it to build a Node REST API.
 
 <img src="https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png" width="400" alt="The Complete Typescript Course">
-
