@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import {Component, effect, signal} from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { email, form, FormField, FormRoot, minLength, required } from '@angular/forms/signals';
 import { FieldErrorComponent } from '../field-error/field-error.component';
@@ -16,6 +16,10 @@ export class LoginComponent {
 
   loginModel = signal({...LOGIN_FORM_DEFAULT});
 
-  form = form(this.loginModel)
+  form = form(this.loginModel);
+
+  constructor() {
+    effect(() => console.log(this.loginModel()))
+  }
 
 }
