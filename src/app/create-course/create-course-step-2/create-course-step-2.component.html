@@ -2,36 +2,30 @@
   <label>Course Type</label>
   <div class="radio-group">
     <label class="radio-option">
-      <input type="radio" [formField]="step2Form.courseType" value="free"> Free
+      <input type="radio" name="courseType" value="free"> Free
     </label>
     <label class="radio-option">
-      <input type="radio" [formField]="step2Form.courseType" value="premium"> Premium
+      <input type="radio" name="courseType" value="premium"> Premium
     </label>
   </div>
 </div>
 
-<file-upload [formField]="step2Form.thumbnail" requiredFileType="image/png" />
+<div class="field">
+  <label>Thumbnail</label>
+  <input type="file" accept="image/png">
+</div>
 
 <div class="field">
   <label>Price</label>
-  <input type="number" [formField]="step2Form.price" placeholder="Price">
-  <field-error [field]="step2Form.price()" />
+  <input type="number" placeholder="Price">
 </div>
 
-@if (!step2Form.promoStartAt().hidden()) {
-  <div class="field">
-    <label>Promo Start Date</label>
-    <input type="date" [formField]="step2Form.promoStartAt">
-  </div>
-}
+<div class="field">
+  <label>Promo Start Date</label>
+  <input type="date">
+</div>
 
-@if (!step2Form.promoEndAt().hidden()) {
-  <div class="field">
-    <label>Promo End Date</label>
-    <input type="date" [formField]="step2Form.promoEndAt">
-  </div>
-}
-
-@if (step2Form().dirty()) {
-  <field-error [field]="step2Form()" />
-}
+<div class="field">
+  <label>Promo End Date</label>
+  <input type="date">
+</div>

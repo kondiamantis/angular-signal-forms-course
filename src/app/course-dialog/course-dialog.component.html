@@ -9,18 +9,15 @@
   </div>
 </div>
 
-<form [formRoot]="courseForm">
+<form>
   <div class="field">
     <label for="description">Course Description</label>
-    <input id="description" [formField]="courseForm.description" placeholder="Course description">
-    @if (courseForm.description().touched() && courseForm.description().invalid()) {
-      <div class="err">{{ courseForm.description().errors()[0]?.message }}</div>
-    }
+    <input id="description" placeholder="Course description">
   </div>
 
   <div class="field">
     <label for="category">Category</label>
-    <select id="category" [formField]="courseForm.category">
+    <select id="category">
       <option value="BEGINNER">Beginner</option>
       <option value="INTERMEDIATE">Intermediate</option>
       <option value="ADVANCED">Advanced</option>
@@ -29,18 +26,12 @@
 
   <div class="field">
     <label for="releasedAt">Release Date</label>
-    <input id="releasedAt" type="date" [formField]="courseForm.releasedAt">
-    @if (courseForm.releasedAt().touched() && courseForm.releasedAt().invalid()) {
-      <div class="err">{{ courseForm.releasedAt().errors()[0]?.message }}</div>
-    }
+    <input id="releasedAt" type="date">
   </div>
 
   <div class="field">
     <label for="longDescription">Long Description</label>
-    <textarea id="longDescription" [formField]="courseForm.longDescription" rows="4" placeholder="Long description"></textarea>
-    @if (courseForm.longDescription().touched() && courseForm.longDescription().invalid()) {
-      <div class="err">{{ courseForm.longDescription().errors()[0]?.message }}</div>
-    }
+    <textarea id="longDescription" rows="4" placeholder="Long description"></textarea>
   </div>
 
   <div class="modal-actions">
@@ -48,7 +39,7 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
       Close
     </button>
-    <button class="btn btn-primary" type="submit" [disabled]="courseForm().invalid() || courseForm().submitting()">
+    <button class="btn btn-primary" type="submit">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
       Save
     </button>

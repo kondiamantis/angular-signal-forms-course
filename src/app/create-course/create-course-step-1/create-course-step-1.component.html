@@ -1,16 +1,12 @@
 <div class="field">
   <label>Course Title</label>
-  <input [formField]="step1Form.title" placeholder="Course title">
-  <div class="hint">{{ step1Model().title.length }} / 60</div>
-  @if (step1Form.title().pending()) {
-    <div class="hint">Checking availability…</div>
-  }
-  <field-error [field]="step1Form.title()" />
+  <input placeholder="Course title">
+  <div class="hint">0 / 60</div>
 </div>
 
 <div class="field">
   <label>Category</label>
-  <select [formField]="step1Form.category">
+  <select>
     @for (cat of courseCategories(); track cat.code) {
       <option [value]="cat.code">{{ cat.description }}</option>
     }
@@ -19,15 +15,15 @@
 
 <div class="field">
   <label>Release Date</label>
-  <input type="date" [formField]="step1Form.releasedAt">
+  <input type="date">
 </div>
 
 <div class="field inline">
-  <input type="checkbox" id="downloads" [formField]="step1Form.downloadsAllowed">
+  <input type="checkbox" id="downloads">
   <label for="downloads">Downloads allowed?</label>
 </div>
 
 <div class="field">
   <label>Description</label>
-  <textarea [formField]="step1Form.longDescription" placeholder="Course description" rows="4"></textarea>
+  <textarea placeholder="Course description" rows="4"></textarea>
 </div>

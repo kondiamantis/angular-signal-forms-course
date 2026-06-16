@@ -1,42 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { email, form, FormField, FormRoot, minLength, required } from '@angular/forms/signals';
-import { FieldErrorComponent } from '../field-error/field-error.component';
-import { LOGIN_FORM_DEFAULT, LoginData } from './login.model';
-import { passwordStrength } from '../validators/password-strength.validator';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [FormField, FormRoot, FieldErrorComponent]
 })
 export class LoginComponent {
-  loginModel = signal<LoginData>({ ...LOGIN_FORM_DEFAULT });
-
-  loginForm = form(
-    this.loginModel,
-    (schemaPath) => {
-      required(schemaPath.email, { message: 'Email is required.' });
-      email(schemaPath.email, { message: 'Enter a valid email address.' });
-
-      required(schemaPath.password, { message: 'Password is required.' });
-      minLength(schemaPath.password, 8, { message: 'Password must be at least 8 characters.' });
-      passwordStrength(schemaPath.password);
-
-      // Alternative: swap the above for a Zod schema
-      // validateStandardSchema(schemaPath, loginZodSchema);
-    },
-    {
-      submission: {
-        action: async () => {
-          console.log('Logging in with:', this.loginModel());
-        }
-      }
-    }
-  );
-
-  reset() {
-    this.loginModel.set({ ...LOGIN_FORM_DEFAULT });
-  }
 }
