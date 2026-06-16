@@ -22,6 +22,15 @@ With the following command the angular-cli will be installed globally in your ma
 
 # How To install this repository
 
+## Branches
+
+This repository uses two main branches:
+
+- **`main`** — the finished code at the end of the course, with all signal forms features fully implemented
+- **`1-start`** — the starting point for the course, with the form structure in place but all signal forms code removed, ready to be built step by step
+
+## Installation
+
 We can install the main branch using the following commands:
 
     git clone https://github.com/angular-university/angular-signal-forms-course.git
@@ -29,6 +38,10 @@ We can install the main branch using the following commands:
     cd angular-signal-forms-course
 
     npm install
+
+To start from the beginning of the course, switch to the `1-start` branch after cloning:
+
+    git checkout 1-start
 
 This should take a couple of minutes. If there are issues, please post the complete error message in the Questions section of the course.
 
