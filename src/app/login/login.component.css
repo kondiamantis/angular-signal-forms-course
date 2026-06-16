@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 16px 12vh;
+  gap: 48px;
   background:
     radial-gradient(ellipse at 70% -5%, rgba(228, 0, 53, 0.55) 0%, transparent 45%),
     radial-gradient(ellipse at 30% 105%, rgba(108, 0, 245, 0.45) 0%, transparent 45%),
@@ -144,4 +145,25 @@
 .btn-reset:hover {
   border-color: rgba(255, 255, 255, 0.25);
   color: #ccc;
+}
+
+.field-debug {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.8;
+}
+
+.field-debug p:first-child {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -7,15 +7,17 @@
       <p class="login-subtitle">Sign in to your account</p>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" [formRoot]="form" >
       <div class="field">
         <label for="email">Email address</label>
-        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
+        <input [formField]="form.email"
+               id="email" type="email" placeholder="your@email.com" autocomplete="email">
       </div>
 
       <div class="field">
         <label for="password">Password</label>
-        <input id="password" type="password" placeholder="••••••••" autocomplete="current-password">
+        <input [formField]="form.password"
+               id="password" type="password" placeholder="••••••••" autocomplete="current-password">
       </div>
 
       <div class="form-actions">
@@ -30,5 +32,16 @@
       </div>
     </form>
 
+  </div>
+
+  <div class="field-debug">
+    <p>Email field state</p>
+    <p>value: {{ form.email().value() }}</p>
+    <p>touched: {{ form.email().touched() }}</p>
+    <p>dirty: {{ form.email().dirty() }}</p>
+    <p>valid: {{ form.email().valid() }}</p>
+    <p>invalid: {{ form.email().invalid() }}</p>
+    <p>pending: {{ form.email().pending() }}</p>
+    <p>errors: {{ form.email().errors() | json }}</p>
   </div>
 </div>
