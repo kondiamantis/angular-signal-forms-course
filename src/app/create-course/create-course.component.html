@@ -1,9 +1,7 @@
 <div class="create-course-panel">
   <div class="create-course-hero">
     <div class="create-course-icon">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm6 12H6v-.9c0-2 4-3.1 6-3.1s6 1.1 6 3.1V18z"/>
-      </svg>
+      <create-course-hero-icon />
     </div>
     <div>
       <h2 class="create-course-headline">Create New Course</h2>
@@ -35,7 +33,7 @@
         <div class="stepper-buttons">
           <button class="btn btn-primary" (click)="currentStep.set(1)">
             Continue
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            <arrow-right-icon />
           </button>
         </div>
       </div>
@@ -44,12 +42,12 @@
         <create-course-step-2 #step2 />
         <div class="stepper-buttons">
           <button class="btn btn-ghost" (click)="currentStep.set(0)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            <arrow-left-icon />
             Back
           </button>
           <button class="btn btn-primary" (click)="currentStep.set(2)">
             Continue
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            <arrow-right-icon />
           </button>
         </div>
       </div>
@@ -58,13 +56,13 @@
         <create-course-step-3 #step3 />
         <div class="stepper-buttons">
           <button class="btn btn-ghost" (click)="currentStep.set(1)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            <arrow-left-icon />
             Back
           </button>
           <button class="btn btn-primary"
             [disabled]="step3.step3Model().lessons.length === 0"
             (click)="submit(step1.step1Model(), step2.step2Model(), step3.step3Model())">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <check-icon />
             Create Course
           </button>
         </div>

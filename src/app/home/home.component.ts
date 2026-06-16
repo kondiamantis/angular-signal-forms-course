@@ -3,12 +3,13 @@ import { httpResource } from '@angular/common/http';
 import { Course } from '../model/course';
 import { RouterLink } from '@angular/router';
 import { CoursesCardListComponent } from '../courses-card-list/courses-card-list.component';
+import { CoursesSectionIconComponent } from './home-icons';
 
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [RouterLink, CoursesCardListComponent]
+  imports: [RouterLink, CoursesCardListComponent, CoursesSectionIconComponent]
 })
 export class HomeComponent {
   activeTab = signal<'beginner' | 'advanced'>('beginner');
