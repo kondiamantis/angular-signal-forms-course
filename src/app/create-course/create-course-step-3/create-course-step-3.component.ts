@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { applyEach, form, FormField, required } from '@angular/forms/signals';
 import { Lesson, Step3Data } from './step3.model';
 
 @Component({
   selector: 'create-course-step-3',
   templateUrl: 'create-course-step-3.component.html',
   styleUrls: ['create-course-step-3.component.scss'],
+  imports: [FormField],
 })
 export class CreateCourseStep3Component {
   step3Model = signal<Step3Data>({ lessons: [] });

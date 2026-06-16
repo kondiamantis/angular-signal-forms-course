@@ -1,4 +1,5 @@
 import { Component, input, linkedSignal, output } from '@angular/core';
+import { form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { Course } from '../model/course';
 
 type CourseFormData = {
@@ -12,6 +13,7 @@ type CourseFormData = {
   selector: 'course-dialog',
   templateUrl: './course-dialog.component.html',
   styleUrls: ['./course-dialog.component.css'],
+  imports: [FormField, FormRoot],
 })
 export class CourseDialogComponent {
   course = input.required<Course>();

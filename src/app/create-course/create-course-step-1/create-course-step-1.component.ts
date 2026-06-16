@@ -1,11 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { httpResource } from '@angular/common/http';
+import { debounce, form, FormField, minLength, maxLength, required } from '@angular/forms/signals';
+import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
 
 @Component({
   selector: 'create-course-step-1',
   templateUrl: './create-course-step-1.component.html',
   styleUrls: ['./create-course-step-1.component.scss'],
+  imports: [FormField, FieldErrorComponent],
 })
 export class CreateCourseStep1Component {
   private categoriesResource = httpResource<CourseCategory[]>(
