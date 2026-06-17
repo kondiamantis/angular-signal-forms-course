@@ -12,4 +12,6 @@ import { ProfileAvatarIconComponent, SaveIconComponent } from './profile-icons';
   imports: [FormField, FormRoot, AddressFormComponent, FileUploadComponent, ProfileAvatarIconComponent, SaveIconComponent],
 })
 export class ProfileComponent {
+
+
 }
