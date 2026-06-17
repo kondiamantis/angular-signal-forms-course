@@ -26,12 +26,13 @@
 
       <div class="form-actions">
 
-        <button class="btn-login" type="submit">
+        <button class="btn-login" type="submit"
+          [disabled]="form().submitting()">
           <sign-in-icon />
-          Sign in
+          @if (form().submitting()) { Signing in… } @else { Sign in }
         </button>
 
-        <button (click)="form().reset()"
+        <button (click)="reset()"
           class="btn-reset" type="button">
           <reset-icon />
           Reset
