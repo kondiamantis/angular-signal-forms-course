@@ -1,10 +1,11 @@
 import {Component, effect, signal} from '@angular/core';
 import { JsonPipe } from '@angular/common';
-import { email, form, FormField, FormRoot, minLength, required } from '@angular/forms/signals';
+import {email, form, FormField, FormRoot, minLength, required, validate} from '@angular/forms/signals';
 import { FieldErrorComponent } from '../field-error/field-error.component';
 import { LOGIN_FORM_DEFAULT, LoginData } from './login.model';
 import { LoginLogoComponent } from './login-logo.component';
 import { ResetIconComponent, SignInIconComponent } from './login-icons';
+import {passwordStrength} from "./password-strength.validator";
 
 @Component({
   selector: 'login',
@@ -23,6 +24,7 @@ export class LoginComponent {
       email(path.email, { message: 'Enter a valid email address.' })  ;
       required(path.password, { message: 'Password is required.' });
       minLength(path.password, 8, { message: 'Password must be at least 8 characters.' });
+      passwordStrength(path.password)
     },
     {
       submission: {
