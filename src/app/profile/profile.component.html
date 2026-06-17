@@ -38,3 +38,25 @@
     </div>
   </div>
 </div>
+
+<div class="field-debug">
+  <p>Email field state</p>
+  <p>value: {{ profileForm.email().value() }}</p>
+  <p>touched: {{ profileForm.email().touched() }}</p>
+  <p>dirty: {{ profileForm.email().dirty() }}</p>
+  <p>valid: {{ profileForm.email().valid() }}</p>
+  <p>invalid: {{ profileForm.email().invalid() }}</p>
+  <p>pending: {{ profileForm.email().pending() }}</p>
+  <p>errors: {{ profileForm.email().errors() | json }}</p>
+</div>
+
+<div class="field-debug">
+  <p>Form state</p>
+  <p>value: {{ profileForm().value() | json }}</p>
+  <p>touched: {{ profileForm().touched() }}</p>
+  <p>dirty: {{ profileForm().dirty() }}</p>
+  <p>valid: {{ profileForm().valid() }}</p>
+  <p>invalid: {{ profileForm().invalid() }}</p>
+  <p>pending: {{ profileForm().pending() }}</p>
+  <p>errors: {{ profileForm().errors() | json }}</p>
+</div>
