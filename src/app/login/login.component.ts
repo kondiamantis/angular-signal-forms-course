@@ -24,7 +24,7 @@ export class LoginComponent {
       email(path.email, { message: 'Enter a valid email address.' })  ;
       required(path.password, { message: 'Password is required.' });
       minLength(path.password, 8, { message: 'Password must be at least 8 characters.' });
-      passwordStrength(path.password)
+      passwordStrength(path.password);
     },
     {
       submission: {
