@@ -1,5 +1,6 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, input, model, output, signal } from '@angular/core';
 import { HttpEventType, httpResource } from '@angular/common/http';
+import { FormValueControl } from '@angular/forms/signals';
 
 @Component({
   selector: 'file-upload',
