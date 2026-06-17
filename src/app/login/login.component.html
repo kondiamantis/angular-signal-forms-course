@@ -13,6 +13,7 @@
         <input id="email" type="email"
                [formField]="form.email"
                placeholder="your@email.com" autocomplete="email">
+      <field-error [field]="form.email()"/>
       </div>
 
       <div class="field">
@@ -20,6 +21,7 @@
         <input id="password" type="password"
                [formField]="form.password"
                placeholder="••••••••" autocomplete="current-password">
+        <field-error [field]="form.password()"/>
       </div>
 
       <div class="form-actions">
