@@ -122,6 +122,28 @@ tr:last-child td { border-bottom: none; }
 .stepper-buttons { display: flex; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
 .step-content { padding: 0 24px 24px; }
 
+/* ── Debug panel ── */
+.field-debug {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.8;
+}
+
+.field-debug p:first-child {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* ── Misc ── */
 .radio-group { display: flex; gap: 20px; align-items: center; margin-bottom: 4px; }
 .radio-option { display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text); font-size: 14px; }
