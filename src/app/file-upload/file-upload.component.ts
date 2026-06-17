@@ -1,6 +1,5 @@
-import { Component, computed, effect, input, model, output, signal } from '@angular/core';
-import { HttpEventType, httpResource } from '@angular/common/http';
-import { FormValueControl } from '@angular/forms/signals';
+import { Component, inject, input, signal } from '@angular/core';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'file-upload',
@@ -8,6 +7,8 @@ import { FormValueControl } from '@angular/forms/signals';
   styleUrls: ['file-upload.component.scss'],
 })
 export class FileUploadComponent {
+  private http = inject(HttpClient);
+
   readonly requiredFileType = input<string>('');
 
   readonly value = signal<string | null>(null);
@@ -23,8 +24,31 @@ export class FileUploadComponent {
 
   onFileSelected(event: Event) {
     const file: File = (event.target as HTMLInputElement).files![0];
-    if (file) {
-      this.fileName.set(file.name);
-    }
+
+    if (!file) return;
+
+    this.fileName.set(file.name);
+    this.fileUploadError.set(false);
+    this.value.set(URL.createObjectURL(file));
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    this.http.post('/api/files/upload', formData, {
+      reportProgress: true,
+      observe: 'events',
+    }).subscribe({
+      next: (event) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.uploadProgress.set(Math.round(100 * event.loaded / event.total!));
+        } else if (event.type === HttpEventType.Response) {
+          this.uploadProgress.set(null);
+        }
+      },
+      error: () => {
+        this.fileUploadError.set(true);
+        this.uploadProgress.set(null);
+      },
+    });
   }
 }
