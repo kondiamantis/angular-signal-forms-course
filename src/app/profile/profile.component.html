@@ -1,6 +1,7 @@
 <div class="profile-page">
   <h2 class="profile-title">My Profile</h2>
 
+  <div class="profile-layout">
   <div class="card profile-card">
 
     <div class="profile-avatar-bar">
@@ -18,7 +19,7 @@
 
         <div class="field">
           <label>Profile picture</label>
-          <input type="file" accept="image/*">
+          <file-upload requiredFileType="image/*" />
         </div>
 
         <div class="field">
@@ -42,7 +43,6 @@
       </form>
     </div>
   </div>
-</div>
 
 <!--div class="field-debug">
   <p>Email field state</p>
@@ -53,7 +53,7 @@
   <p>invalid: {{ form.email().invalid() }}</p>
   <p>pending: {{ form.email().pending() }}</p>
   <p>errors: {{ form.email().errors() | json }}</p>
-</div>
+</div-->
 
 <div class="field-debug">
   <p>Form state</p>
@@ -64,4 +64,4 @@
   <p>invalid: {{ form().invalid() }}</p>
   <p>pending: {{ form().pending() }}</p>
   <p>errors: {{ form().errors() | json }}</p>
-</div  -->
+</div>

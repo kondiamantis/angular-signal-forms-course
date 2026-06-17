@@ -1,5 +1,5 @@
-import { Component, inject, input, signal } from '@angular/core';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Component, computed, input, signal } from '@angular/core';
+import { HttpEventType, httpResource } from '@angular/common/http';
 
 @Component({
   selector: 'file-upload',
@@ -7,16 +7,33 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
   styleUrls: ['file-upload.component.scss'],
 })
 export class FileUploadComponent {
-  private http = inject(HttpClient);
-
   readonly requiredFileType = input<string>('');
 
   readonly value = signal<string | null>(null);
   readonly disabled = signal(false);
-  readonly uploadProgress = signal<number | null>(null);
-  readonly fileUploadError = signal(false);
 
   fileName = signal('');
+
+  private readonly fileData = signal<FormData | null>(null);
+
+  private readonly uploadResource = httpResource(() => {
+    const body = this.fileData();
+    if (!body) return undefined;
+    return {
+      url: '/api/upload',
+      method: 'POST',
+      body,
+      reportProgress: true,
+    };
+  });
+
+  readonly uploadProgress = computed(() => {
+    const progress = this.uploadResource.progress();
+    if (!progress || progress.type !== HttpEventType.UploadProgress) return null;
+    return progress.total ? Math.round(100 * progress.loaded / progress.total) : null;
+  });
+
+  readonly fileUploadError = computed(() => !!this.uploadResource.error());
 
   onClick(fileUpload: HTMLInputElement) {
     fileUpload.click();
@@ -24,31 +41,13 @@ export class FileUploadComponent {
 
   onFileSelected(event: Event) {
     const file: File = (event.target as HTMLInputElement).files![0];
-
     if (!file) return;
 
     this.fileName.set(file.name);
-    this.fileUploadError.set(false);
     this.value.set(URL.createObjectURL(file));
 
     const formData = new FormData();
     formData.append('file', file);
-
-    this.http.post('/api/files/upload', formData, {
-      reportProgress: true,
-      observe: 'events',
-    }).subscribe({
-      next: (event) => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.uploadProgress.set(Math.round(100 * event.loaded / event.total!));
-        } else if (event.type === HttpEventType.Response) {
-          this.uploadProgress.set(null);
-        }
-      },
-      error: () => {
-        this.fileUploadError.set(true);
-        this.uploadProgress.set(null);
-      },
-    });
+    this.fileData.set(formData);
   }
 }

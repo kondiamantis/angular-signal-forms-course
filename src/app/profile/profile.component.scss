@@ -1,7 +1,20 @@
 .profile-page {
-  max-width: 640px;
-  margin: 0 auto;
   padding: 2rem 1rem;
+}
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+
+  .field-debug {
+    margin-top: 0;
+  }
+}
+
+.profile-card {
+  flex: 1;
+  max-width: 640px;
 }
 
 .profile-title {
