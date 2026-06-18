@@ -21,6 +21,6 @@ export function onFileUpload(req: Request, res: Response) {
 
   file.mv(filePath, (err: any) => {
     if (err) return res.status(500).json({ error: 'Upload failed.' });
-    res.status(200).json({ url: `/api/uploads/${fileName}` });
+    setTimeout(() => res.status(200).json({ url: `/api/uploads/${fileName}` }), 3000);
   });
 }
