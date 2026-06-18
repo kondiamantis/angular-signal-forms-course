@@ -1,4 +1,4 @@
-import { Component, input, linkedSignal, output } from '@angular/core';
+import {Component, input, linkedSignal, output, signal} from '@angular/core';
 import { form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { Course } from '../model/course';
 import { CloseIconComponent, EditIconComponent, SaveIconComponent } from './course-dialog-icons';
@@ -21,12 +21,7 @@ export class CourseDialogComponent {
   saved = output<CourseFormData>();
   closed = output();
 
-  courseModel = linkedSignal<CourseFormData>(() => ({
-    description: this.course().description,
-    category: this.course().category,
-    releasedAt: new Date(),
-    longDescription: this.course().longDescription,
-  }));
+  courseModel = signal<CourseFormData | null>(null);
 
   form = form(
     this.courseModel,
