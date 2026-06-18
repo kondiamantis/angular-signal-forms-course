@@ -1,4 +1,4 @@
-import { Component, computed, input, model, output, signal } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { HttpEventType, httpResource } from '@angular/common/http';
 import { FormValueControl } from '@angular/forms/signals';
 
@@ -10,14 +10,14 @@ import { FormValueControl } from '@angular/forms/signals';
 export class FileUploadComponent {
   readonly requiredFileType = input<string>('');
 
-  readonly value = signal<string | null>(null);
+  readonly value = computed(() => this.uploadResource.value()?.url ?? null);
   readonly disabled = signal(false);
 
   fileName = signal('');
 
   private readonly fileData = signal<FormData | null>(null);
 
-  private readonly uploadResource = httpResource(() => {
+  private readonly uploadResource = httpResource<{ url: string }>(() => {
     const body = this.fileData();
     if (!body) return undefined;
     return {
@@ -45,7 +45,6 @@ export class FileUploadComponent {
     if (!file) return;
 
     this.fileName.set(file.name);
-    this.value.set(URL.createObjectURL(file));
 
     const formData = new FormData();
     formData.append('file', file);
