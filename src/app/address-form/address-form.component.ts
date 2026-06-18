@@ -1,4 +1,4 @@
-import { Component, input, model } from '@angular/core';
+import {Component, effect, input, model, output} from '@angular/core';
 import {FieldTree, form, FormField, FormRoot, FormValueControl, pattern, required} from '@angular/forms/signals';
 import { FieldErrorComponent } from '../field-error/field-error.component';
 import { ADDRESS_DEFAULT, AddressData } from './address.model';
@@ -13,6 +13,8 @@ export class AddressFormComponent implements FormValueControl<AddressData> {
 
   readonly legend = input<string>('Address');
 
+  readonly touch = output<void>();
+
   readonly value = model<AddressData>({ ...ADDRESS_DEFAULT });
 
   readonly form = form(this.value, (path) => {
@@ -22,4 +24,8 @@ export class AddressFormComponent implements FormValueControl<AddressData> {
     pattern(path.zipCode, /^\d{5}(-\d{4})?$/, { message: 'Enter a valid US zip code.' });
     required(path.city, { message: 'City is required.' });
   });
+
+  constructor() {
+    effect(() => { if (this.form().touched()) this.touch.emit(); });
+  }
 }
