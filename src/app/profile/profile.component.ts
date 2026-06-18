@@ -6,6 +6,7 @@ import { PROFILE_DEFAULT, ProfileData } from './profile.model';
 import { ProfileAvatarIconComponent, SaveIconComponent } from './profile-icons';
 import {JsonPipe} from "@angular/common";
 import {addressSchema, setupAddressField} from "../address-form/address-form.setup";
+import {HasUnsavedChanges} from "../guards/has-unsaved-changed.model";
 
 @Component({
   selector: 'profile',
@@ -13,7 +14,7 @@ import {addressSchema, setupAddressField} from "../address-form/address-form.set
   styleUrls: ['./profile.component.scss'],
   imports: [FormField, FormRoot, AddressFormComponent, FileUploadComponent, ProfileAvatarIconComponent, SaveIconComponent, JsonPipe],
 })
-export class ProfileComponent {
+export class ProfileComponent implements HasUnsavedChanges {
 
   profileModel = signal<ProfileData>({ ...PROFILE_DEFAULT });
 
@@ -27,5 +28,9 @@ export class ProfileComponent {
       setupAddressField(path.address);
     }
   );
+
+  hasUnsavedChanges() {
+    return this.form().dirty();
+  }
 
 }
