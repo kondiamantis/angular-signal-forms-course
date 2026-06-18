@@ -20,7 +20,7 @@
 
           <div class="field">
             <label>Profile picture</label>
-            <file-upload requiredFileType="image/*" />
+            <file-upload [formField]="form.avatarUrl" requiredFileType="image/*" />
           </div>
 
           <div class="field">
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <!--div class="field-debug">
+    <div class="field-debug">
       <p>Avatar URL field state</p>
       <p>value: {{ form.avatarUrl().value() }}</p>
       <p>touched: {{ form.avatarUrl().touched() }}</p>
@@ -54,7 +54,7 @@
       <p>invalid: {{ form.avatarUrl().invalid() }}</p>
       <p>pending: {{ form.avatarUrl().pending() }}</p>
       <p>errors: {{ form.avatarUrl().errors() | json }}</p>
-    </div-->
+    </div>
 
     <div class="field-debug">
       <p>Form state</p>
