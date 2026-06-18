@@ -28,5 +28,23 @@ export class CourseDialogComponent {
     longDescription: this.course().longDescription,
   }));
 
+  form = form(
+    this.courseModel,
+    (schemaPath) => {
+      required(schemaPath.description, { message: 'Description is required.' });
+      required(schemaPath.category, { message: 'Category is required.' });
+      required(schemaPath.releasedAt, { message: 'Release date is required.' });
+      required(schemaPath.longDescription, { message: 'Long description is required.' });
+    },
+    {
+      submission: {
+        action: async () => {
+          this.saved.emit(this.courseModel());
+        }
+      }
+    }
+  );
+
   close() { this.closed.emit(); }
+
 }
