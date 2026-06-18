@@ -1,23 +1,23 @@
-<fieldset>
+<form [formRoot]="form">
   <legend>{{ legend() }}</legend>
 
   <div class="field">
     <label for="addressLine1">Address Line 1</label>
-    <input id="addressLine1" placeholder="Address Line 1">
+    <input [formField]="form.addressLine1" id="addressLine1" placeholder="Address Line 1">
   </div>
 
   <div class="field">
     <label for="addressLine2">Address Line 2</label>
-    <input id="addressLine2" placeholder="Address Line 2">
+    <input [formField]="form.addressLine2" id="addressLine2" placeholder="Address Line 2">
   </div>
 
   <div class="field">
     <label for="zipCode">Zip Code</label>
-    <input id="zipCode" placeholder="Zip Code">
+    <input [formField]="form.zipCode" id="zipCode" placeholder="Zip Code">
   </div>
 
   <div class="field">
     <label for="city">City</label>
-    <input id="city" placeholder="City">
+    <input [formField]="form.city" id="city" placeholder="City">
   </div>
-</fieldset>
+</form>
