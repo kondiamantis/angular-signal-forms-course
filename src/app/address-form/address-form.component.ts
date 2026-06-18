@@ -9,12 +9,13 @@ import { ADDRESS_DEFAULT, AddressData } from './address.model';
   styleUrls: ['./address-form.component.scss'],
   imports: [FormField, FormRoot, FieldErrorComponent],
 })
-export class AddressFormComponent {
+export class AddressFormComponent implements FormValueControl<AddressData> {
+
   readonly legend = input<string>('Address');
 
   readonly value = model<AddressData>({ ...ADDRESS_DEFAULT });
 
-  readonly form: FieldTree<AddressData> = form(this.value, (path) => {
+  readonly form = form(this.value, (path) => {
     required(path.addressLine1, { message: 'Address line 1 is required.' });
     required(path.addressLine2, { message: 'Address line 2 is required.' });
     required(path.zipCode, { message: 'Zip code is required.' });

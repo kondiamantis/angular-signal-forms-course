@@ -23,7 +23,6 @@ export class ProfileComponent {
       required(path.email, { message: 'Email is required.' });
       email(path.email, { message: 'Enter a valid email address.' });
       readonly(path.email);
-      required(path.address);
     }
   );
 
