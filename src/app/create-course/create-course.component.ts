@@ -13,6 +13,12 @@ import { ArrowLeftIconComponent, ArrowRightIconComponent, CheckIconComponent, Cr
 export class CreateCourseComponent {
   currentStep = signal(0);
 
+  readonly steps = [
+    { label: 'Landing page' },
+    { label: 'Pricing' },
+    { label: 'Lessons' },
+  ];
+
   submit(step1: any, step2: any, step3: any) {
     console.log(step1, step2, step3);
   }
