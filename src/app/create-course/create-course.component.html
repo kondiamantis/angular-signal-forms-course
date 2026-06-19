@@ -11,20 +11,16 @@
 
   <div class="card stepper-card">
     <div class="stepper-header">
-      <div class="step-indicator">
-        <div class="step-circle" [class.active]="currentStep() === 0" [class.done]="currentStep() > 0">1</div>
-        <span class="step-label" [class.active]="currentStep() === 0">Landing page</span>
-      </div>
-      <div class="step-connector"></div>
-      <div class="step-indicator">
-        <div class="step-circle" [class.active]="currentStep() === 1" [class.done]="currentStep() > 1">2</div>
-        <span class="step-label" [class.active]="currentStep() === 1">Pricing</span>
-      </div>
-      <div class="step-connector"></div>
-      <div class="step-indicator">
-        <div class="step-circle" [class.active]="currentStep() === 2" [class.done]="currentStep() > 2">3</div>
-        <span class="step-label" [class.active]="currentStep() === 2">Lessons</span>
-      </div>
+      @let step = currentStep();
+      @for (s of steps; track $index) {
+        @if (!$first) {
+          <div class="step-connector"></div>
+        }
+        <div class="step-indicator">
+          <div class="step-circle" [class.active]="step === $index" [class.done]="step > $index">{{ $index + 1 }}</div>
+          <span class="step-label" [class.active]="step === $index">{{ s.label }}</span>
+        </div>
+      }
     </div>
 
     <div class="step-content">
