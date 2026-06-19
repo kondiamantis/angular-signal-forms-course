@@ -19,6 +19,8 @@ export class HomeComponent {
     { parse: (res: any) => res.payload as Course[], defaultValue: [] as Course[] }
   );
 
+  isLoading = this.coursesResource.isLoading;
+
   beginnerCourses = computed(() =>
     this.coursesResource.value().filter(c => c.category === 'BEGINNER')
   );
