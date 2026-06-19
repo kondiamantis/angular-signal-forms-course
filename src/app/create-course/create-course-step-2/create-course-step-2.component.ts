@@ -13,12 +13,12 @@ import { STEP2_DEFAULT, Step2Data } from './step2.model';
 export class CreateCourseStep2Component {
   step2Model = signal<Step2Data>({ ...STEP2_DEFAULT });
 
-  step2Form = form(this.step2Model, (schemaPath) => {
-    required(schemaPath.courseType, { message: 'Course type is required.' });
+  step2Form = form(this.step2Model, (schema) => {
+    required(schema.courseType, { message: 'Course type is required.' });
 
-    required(schemaPath.price, { message: 'Price is required.' });
-    min(schemaPath.price, 1, { message: 'Price must be at least 1.' });
-    max(schemaPath.price, 9999, { message: 'Price must be at most 9999.' });
+    required(schema.price, { message: 'Price is required.' });
+    min(schema.price, 1, { message: 'Price must be at least 1.' });
+    max(schema.price, 9999, { message: 'Price must be at most 9999.' });
 
   });
 
