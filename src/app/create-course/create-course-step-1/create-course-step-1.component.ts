@@ -12,6 +12,7 @@ import {
 } from '@angular/forms/signals';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
+import {courseTitleExists} from "./course-title.validator";
 
 @Component({
   selector: 'create-course-step-1',
@@ -33,6 +34,7 @@ export class CreateCourseStep1Component {
     required(path.title, { message: 'Title is required.' });
     minLength(path.title, 5, { message: 'Title must be at least 5 characters.' });
     maxLength(path.title, 60, { message: 'Title must be at most 60 characters.' });
+    courseTitleExists(path.title);
 
     required(path.downloadsAllowed, { message: 'You must allow downloads.' });
 
