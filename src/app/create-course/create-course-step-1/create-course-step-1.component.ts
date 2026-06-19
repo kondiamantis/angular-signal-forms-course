@@ -1,6 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { httpResource } from '@angular/common/http';
-import { debounce, form, FormField, FormRoot, minLength, maxLength, required } from '@angular/forms/signals';
+import {
+  debounce,
+  form,
+  FormField,
+  FormRoot,
+  minLength,
+  maxLength,
+  required,
+  validateHttp
+} from '@angular/forms/signals';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
 
@@ -19,17 +28,17 @@ export class CreateCourseStep1Component {
 
   step1Model = signal<Step1Data>({ ...STEP1_DEFAULT });
 
-  step1Form = form(this.step1Model, (schemaPath) => {
-    required(schemaPath.title, { message: 'Title is required.' });
-    minLength(schemaPath.title, 5, { message: 'Title must be at least 5 characters.' });
-    maxLength(schemaPath.title, 60, { message: 'Title must be at most 60 characters.' });
+  step1Form = form(this.step1Model, (path) => {
+    required(path.title, { message: 'Title is required.' });
+    minLength(path.title, 5, { message: 'Title must be at least 5 characters.' });
+    maxLength(path.title, 60, { message: 'Title must be at most 60 characters.' });
 
-    required(schemaPath.downloadsAllowed, { message: 'You must allow downloads.' });
+    required(path.downloadsAllowed, { message: 'You must allow downloads.' });
 
-    required(schemaPath.releasedAt, { message: 'Release date is required.' });
-    required(schemaPath.category, { message: 'Category is required.' });
+    required(path.releasedAt, { message: 'Release date is required.' });
+    required(path.category, { message: 'Category is required.' });
 
-    required(schemaPath.longDescription, { message: 'Description is required.' });
-    minLength(schemaPath.longDescription, 3, { message: 'Description must be at least 3 characters.' });
+    required(path.longDescription, { message: 'Description is required.' });
+    minLength(path.longDescription, 3, { message: 'Description must be at least 3 characters.' });
   });
 }
