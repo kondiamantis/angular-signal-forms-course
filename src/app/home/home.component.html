@@ -15,11 +15,17 @@
     <div class="tab" [class.active]="activeTab() === 'advanced'" (click)="activeTab.set('advanced')">Advanced</div>
   </div>
 
-  @if (activeTab() === 'beginner') {
-    <courses-card-list [courses]="beginnerCourses()" />
-  }
-  @if (activeTab() === 'advanced') {
-    <courses-card-list [courses]="advancedCourses()" />
+  @if (isLoading()) {
+    <div class="loading-indicator">
+      <div class="spinner"></div>
+    </div>
+  } @else {
+    @if (activeTab() === 'beginner') {
+      <courses-card-list [courses]="beginnerCourses()" />
+    }
+    @if (activeTab() === 'advanced') {
+      <courses-card-list [courses]="advancedCourses()" />
+    }
   }
 
 </div>
