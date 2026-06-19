@@ -3,6 +3,10 @@ export type CourseCategory = {
   description: string;
 };
 
+export type CourseListResponse = {
+  payload: Array<{ description: string }>;
+};
+
 export type Step1Data = {
   title: string;
   releasedAt: Date;
