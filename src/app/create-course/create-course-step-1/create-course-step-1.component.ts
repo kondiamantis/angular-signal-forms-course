@@ -1,21 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { httpResource } from '@angular/common/http';
-import { debounce, form, FormField, FormRoot, minLength, maxLength, PathKind, required, SchemaPath, SchemaPathRules, validate } from '@angular/forms/signals';
+import { debounce, form, FormField, FormRoot, minLength, maxLength, required } from '@angular/forms/signals';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
-
-
-function requiredTrue<TPathKind extends PathKind = PathKind.Root>(
-  path: SchemaPath<boolean, SchemaPathRules.Supported, TPathKind>,
-  options?: { message?: string }
-) {
-  validate(path, ({ value }) => {
-    return value() === true ? null : {
-      kind: 'requiredTrue',
-      message: options?.message ?? 'This field must be checked.',
-    };
-  });
-}
 
 @Component({
   selector: 'create-course-step-1',
@@ -37,6 +24,7 @@ export class CreateCourseStep1Component {
     minLength(schemaPath.title, 5, { message: 'Title must be at least 5 characters.' });
     maxLength(schemaPath.title, 60, { message: 'Title must be at most 60 characters.' });
 
+    required(schemaPath.downloadsAllowed, { message: 'You must allow downloads.' });
 
     required(schemaPath.releasedAt, { message: 'Release date is required.' });
     required(schemaPath.category, { message: 'Category is required.' });
