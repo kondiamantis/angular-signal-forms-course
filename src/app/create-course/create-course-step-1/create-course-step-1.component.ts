@@ -1,14 +1,27 @@
 import { Component, signal } from '@angular/core';
 import { httpResource } from '@angular/common/http';
-import { debounce, form, FormField, minLength, maxLength, required } from '@angular/forms/signals';
+import { debounce, form, FormField, FormRoot, minLength, maxLength, PathKind, required, SchemaPath, SchemaPathRules, validate } from '@angular/forms/signals';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
+
+
+function requiredTrue<TPathKind extends PathKind = PathKind.Root>(
+  path: SchemaPath<boolean, SchemaPathRules.Supported, TPathKind>,
+  options?: { message?: string }
+) {
+  validate(path, ({ value }) => {
+    return value() === true ? null : {
+      kind: 'requiredTrue',
+      message: options?.message ?? 'This field must be checked.',
+    };
+  });
+}
 
 @Component({
   selector: 'create-course-step-1',
   templateUrl: './create-course-step-1.component.html',
   styleUrls: ['./create-course-step-1.component.scss'],
-  imports: [FormField, FieldErrorComponent],
+  imports: [FormField, FormRoot, FieldErrorComponent],
 })
 export class CreateCourseStep1Component {
   private categoriesResource = httpResource<CourseCategory[]>(
@@ -18,4 +31,17 @@ export class CreateCourseStep1Component {
   courseCategories = this.categoriesResource.value;
 
   step1Model = signal<Step1Data>({ ...STEP1_DEFAULT });
+
+  step1Form = form(this.step1Model, (schemaPath) => {
+    required(schemaPath.title, { message: 'Title is required.' });
+    minLength(schemaPath.title, 5, { message: 'Title must be at least 5 characters.' });
+    maxLength(schemaPath.title, 60, { message: 'Title must be at most 60 characters.' });
+
+
+    required(schemaPath.releasedAt, { message: 'Release date is required.' });
+    required(schemaPath.category, { message: 'Category is required.' });
+
+    required(schemaPath.longDescription, { message: 'Description is required.' });
+    minLength(schemaPath.longDescription, 3, { message: 'Description must be at least 3 characters.' });
+  });
 }
