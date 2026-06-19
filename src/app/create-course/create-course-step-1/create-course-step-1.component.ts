@@ -20,6 +20,7 @@ import { CourseCategory, STEP1_DEFAULT, Step1Data } from './step1.model';
   imports: [FormField, FormRoot, FieldErrorComponent],
 })
 export class CreateCourseStep1Component {
+
   private categoriesResource = httpResource<CourseCategory[]>(
     () => '/api/course-categories',
     { parse: (res: any) => res.categories as CourseCategory[], defaultValue: [] as CourseCategory[] }
