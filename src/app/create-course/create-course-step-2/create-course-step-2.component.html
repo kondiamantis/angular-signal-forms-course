@@ -25,6 +25,7 @@
     <div class="field">
       <label>Promo Start Date</label>
       <input type="date" [formField]="step2Form.promoStartAt">
+      <field-error [field]="step2Form.promoStartAt()" />
     </div>
   }
 
@@ -32,6 +33,7 @@
     <div class="field">
       <label>Promo End Date</label>
       <input type="date" [formField]="step2Form.promoEndAt">
+      <field-error [field]="step2Form.promoEndAt()" />
     </div>
   }
 
