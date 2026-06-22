@@ -20,6 +20,12 @@ export class CreateCourseStep2Component {
     min(schema.price, 1, { message: 'Price must be at least 1.' });
     max(schema.price, 9999, { message: 'Price must be at most 9999.' });
 
+    disabled(schema.price, { when: ({ valueOf }) => valueOf(schema.courseType) === 'free'});
+
+    hidden(schema.promoStartAt, { when: ({ valueOf }) => valueOf(schema.courseType) === 'free' });
+
+    hidden(schema.promoEndAt, { when: ({ valueOf }) => valueOf(schema.courseType) === 'free' });
+
   });
 
 }
