@@ -27,9 +27,8 @@ export class CreateCourseStep2Component {
 
     hidden(schema.promoEndAt, { when: ({ valueOf }) => valueOf(schema.courseType) === 'free' });
 
-    dateRange(schema.promoStartAt, schema.promoEndAt,
+    dateRange(schema, schema.promoStartAt, schema.promoEndAt,
       'Promo start date must be before the end date.');
-
 
   });
 
