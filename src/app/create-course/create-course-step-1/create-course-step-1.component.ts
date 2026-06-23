@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { withDraft } from '../with-draft';
 import { httpResource } from '@angular/common/http';
 import {
   debounce,
@@ -45,4 +46,8 @@ export class CreateCourseStep1Component {
     required(path.longDescription, { message: 'Description is required.' });
     minLength(path.longDescription, 3, { message: 'Description must be at least 3 characters.' });
   });
+
+  constructor() {
+    withDraft(this.step1Form, this.step1Model, 'step1');
+  }
 }

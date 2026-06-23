@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { withDraft } from '../with-draft';
 import { applyWhen, disabled, form, FormField, FormRoot, hidden, max, min, required } from '@angular/forms/signals';
 import { dateRange } from './date-range.validator';
 import { FileUploadComponent } from '../../file-upload/file-upload.component';
@@ -38,4 +39,7 @@ export class CreateCourseStep2Component {
 
   });
 
+  constructor() {
+    withDraft(this.step2Form, this.step2Model, 'step2');
+  }
 }

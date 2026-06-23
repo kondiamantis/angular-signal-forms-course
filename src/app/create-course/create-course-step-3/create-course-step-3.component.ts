@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { withDraft } from '../with-draft';
 import {applyEach, form, FormField, FormRoot, required} from '@angular/forms/signals';
 import { Lesson, Step3Data } from './step3.model';
 import {FieldErrorComponent} from "../../field-error/field-error.component";
@@ -32,5 +33,9 @@ export class CreateCourseStep3Component {
       ...m,
       lessons: m.lessons.filter((_, idx) => idx !== i),
     }));
+  }
+
+  constructor() {
+    withDraft(this.step3Form, this.step3Model, 'step3');
   }
 }
