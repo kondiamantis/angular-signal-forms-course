@@ -1,7 +1,7 @@
 
 ## Angular Forms In Depth (Signals Edition)
 
-This repository contains the code of the [Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) video course.
+This repository contains the code of the [Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-forms-in-depth-course) video course.
 
 This course repository is updated to Angular v22, and uses the new Angular Signal Forms API (`@angular/forms/signals`).
 
