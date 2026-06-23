@@ -1,7 +1,7 @@
 
 ## Angular Forms In Depth (Signals Edition)
 
-This repository contains the code of the [Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) video course.
+This repository contains the code of the [Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-forms-in-depth-course) video course.
 
 This course repository is updated to Angular v22, and uses the new Angular Signal Forms API (`@angular/forms/signals`).
 
@@ -87,6 +87,12 @@ Here is a list of all the courses of the Angular University.
 
 <img src="https://angular-academy.s3.amazonaws.com/thumbnails/angular2-for-beginners-small-v2.png" width="400" alt="Angular For Beginners">
 
+## Angular Forms In Depth (Signals Edition)
+
+[Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) — Build complex enterprise data forms with Angular Signal Forms.
+
+<img src="https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-forms-in-depth.jpg" width="400" alt="Angular Forms In Depth - Signals Edition">
+
 ## Angular AI In Depth (with Cursor and Claude Code)
 
 [Angular AI In Depth](https://angular-university.io/course/angular-ai-in-depth-course) — Build modern full-stack Angular applications with signals, standalone components, zoneless architecture, and OpenAI integration using Claude Code.
@@ -122,12 +128,6 @@ Here is a list of all the courses of the Angular University.
 [RxJs In Practice](https://angular-university.io/course/rxjs-course) — Understand the RxJs Observable pattern, learn the RxJs Operators via practical examples.
 
 <img src="https://s3-us-west-1.amazonaws.com/angular-university/course-images/rxjs-in-practice-course.png" width="400" alt="RxJs In Practice">
-
-## Angular Forms In Depth (Signals Edition)
-
-[Angular Forms In Depth - Signals Edition](https://angular-university.io/course/angular-signal-forms-course) — Build complex enterprise data forms with Angular Signal Forms.
-
-<img src="https://d3vigmphadbn9b.cloudfront.net/course-images/large-images/angular-forms-in-depth.jpg" width="400" alt="Angular Forms In Depth - Signals Edition">
 
 ## Angular Forms In Depth
 
