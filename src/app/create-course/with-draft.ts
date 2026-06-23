@@ -9,8 +9,9 @@ export function withDraft<T>(form: FieldTree<T>, model: WritableSignal<T>, key: 
   }
 
   effect(() => {
+    const value = form().value();
     if (form().dirty()) {
-      localStorage.setItem(key, JSON.stringify(model()));
+      localStorage.setItem(key, JSON.stringify(value));
     }
   });
 }
