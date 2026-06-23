@@ -9,6 +9,7 @@ import { Lesson, Step3Data } from './step3.model';
   imports: [FormRoot],
 })
 export class CreateCourseStep3Component {
+
   step3Model = signal<Step3Data>({ lessons: [] });
 
   step3Form = form(this.step3Model, (path) => {
@@ -18,7 +19,7 @@ export class CreateCourseStep3Component {
   addLesson() {
     this.step3Model.update((m) => ({
       ...m,
-      lessons: [...m.lessons, { title: '', level: '' } satisfies Lesson],
+      lessons: [...m.lessons, { title: '', level: '' }],
     }));
   }
 
