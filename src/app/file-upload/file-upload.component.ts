@@ -24,7 +24,7 @@ export class FileUploadComponent {
       url: '/api/upload',
       method: 'POST',
       body,
-      reportProgress: true,
+      reportProgress: true, //useful for showing progress bar
     };
   });
 
