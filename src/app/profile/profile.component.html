@@ -18,7 +18,7 @@
         <div class="field">
           <label>Profile picture</label>
           <!-- <input type="file" accept="image/*"> -->
-          <file-upload requiredFileType="image/*" />
+          <file-upload requiredFileType="image/*" [formField]="form.avatarUrl" />
         </div>
 
         <div class="field">
@@ -45,17 +45,6 @@
 </div>
 
 <div class="field-debug">
-  <p>Email field state</p>
-  <p>value: {{ form.email().value() }}</p>
-  <p>touched: {{ form.email().touched() }}</p>
-  <p>dirty: {{ form.email().dirty() }}</p>
-  <p>valid: {{ form.email().valid() }}</p>
-  <p>invalid: {{ form.email().invalid() }}</p>
-  <p>pending: {{ form.email().pending() }}</p>
-  <p>errors: {{ form.email().errors() | json }}</p>
-</div>
-
-<div class="field-debug">
   <p>Form state</p>
   <p>value: {{ form().value() | json }}</p>
   <p>touched: {{ form().touched() }}</p>
@@ -64,4 +53,26 @@
   <p>invalid: {{ form().invalid() }}</p>
   <p>pending: {{ form().pending() }}</p>
   <p>errors: {{ form().errors() | json }}</p>
+</div>
+
+<div class="field-debug">
+  <p>Avatar URL field state</p>
+  <p>value: {{ form.avatarUrl().value() }}</p>
+  <p>touched: {{ form.avatarUrl().touched() }}</p>
+  <p>dirty: {{ form.avatarUrl().dirty() }}</p>
+  <p>valid: {{ form.avatarUrl().valid() }}</p>
+  <p>invalid: {{ form.avatarUrl().invalid() }}</p>
+  <p>pending: {{ form.avatarUrl().pending() }}</p>
+  <p>errors: {{ form.avatarUrl().errors() | json }}</p>
+</div>
+
+<div class="field-debug">
+  <p>Email field state</p>
+  <p>value: {{ form.email().value() }}</p>
+  <p>touched: {{ form.email().touched() }}</p>
+  <p>dirty: {{ form.email().dirty() }}</p>
+  <p>valid: {{ form.email().valid() }}</p>
+  <p>invalid: {{ form.email().invalid() }}</p>
+  <p>pending: {{ form.email().pending() }}</p>
+  <p>errors: {{ form.email().errors() | json }}</p>
 </div>

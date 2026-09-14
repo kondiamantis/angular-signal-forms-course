@@ -17,6 +17,7 @@ export class ProfileComponent {
   profileModel = signal<ProfileData>({ ...PROFILE_DEFAULT });
 
   form = form(this.profileModel, (path) => {
+    required(path.avatarUrl, { message: 'Profile picture is required.' });
     required(path.email, { message: 'Email is required.' });
     email(path.email, { message: 'Enter a valid email address.' });
     readonly(path.email);

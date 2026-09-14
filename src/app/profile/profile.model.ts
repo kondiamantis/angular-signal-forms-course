@@ -7,7 +7,7 @@ export type ProfileData = {
 };
 
 export const PROFILE_DEFAULT: ProfileData = {
-  email: 'example@gmail..com',
+  email: 'example@gmail.com',
   avatarUrl: null,
   address: { ...ADDRESS_DEFAULT }
 };
