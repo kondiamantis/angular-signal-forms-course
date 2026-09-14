@@ -16,10 +16,10 @@ export class ProfileComponent {
 
   profileModel = signal<ProfileData>({ ...PROFILE_DEFAULT });
 
-  profileForm = form(this.profileModel, (schema) => {
-    required(schema.email, { message: 'Email is required.' });
-    email(schema.email, { message: 'Enter a valid email address.' });
-    readonly(schema.email);
+  form = form(this.profileModel, (path) => {
+    required(path.email, { message: 'Email is required.' });
+    email(path.email, { message: 'Enter a valid email address.' });
+    readonly(path.email);
   });
 
 }
