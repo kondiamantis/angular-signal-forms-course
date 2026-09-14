@@ -21,11 +21,22 @@ export class LoginComponent {
     email(path.email, {message: 'Enter a valid email address'})
     required(path.password, {message: 'Password is required'})
     minLength(path.password, 8, {message: 'Password must be at least 8 characters long'})
+  },
+  {
+    submission: {
+      action: async () => {
+        await new Promise(resolve => setTimeout(resolve, 3000))
+      }
+    }
   })
 
   constructor() {
     effect(() => {
       console.log(this.loginModel())
     })
+  }
+
+  reset() {
+    this.form().reset({...LOGIN_FORM_DEFAULT});
   }
 }

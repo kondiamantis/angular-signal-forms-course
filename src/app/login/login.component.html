@@ -21,9 +21,13 @@
       </div>
 
       <div class="form-actions">
-        <button class="btn-login" type="submit">
+        <button class="btn-login" type="submit" [disabled]="form().submitting()">
           <sign-in-icon />
-          Sign in
+          @if (form().submitting()) {
+            <span>Signing in...</span>
+          } @else {
+            <span>Sign in</span>
+          }
         </button>
         <button class="btn-reset" type="button">
           <reset-icon />
