@@ -22,7 +22,7 @@
 
         <div class="field">
           <label for="email">Email address</label>
-          <input id="email" type="email" placeholder="your@email.com" [formField]="form.email()">
+          <input id="email" type="email" placeholder="your@email.com" [formField]="form.email">
           <!-- <field-error [field]="form.email()" /> -->
            @if(form.email().readonly()) {
             <div class="hint">Email cannot be changed after registration</div>
