@@ -5,6 +5,7 @@ import { AddressFormComponent } from '../address-form/address-form.component';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { PROFILE_DEFAULT, ProfileData } from './profile.model';
 import { ProfileAvatarIconComponent, SaveIconComponent } from './profile-icons';
+import { setupAddressField } from '../address-form/address-form.setup';
 
 @Component({
   selector: 'profile',
@@ -21,6 +22,8 @@ export class ProfileComponent {
     required(path.email, { message: 'Email is required.' });
     email(path.email, { message: 'Enter a valid email address.' });
     readonly(path.email);
+    required(path.address);
+    setupAddressField(path.address);
   });
 
 }
