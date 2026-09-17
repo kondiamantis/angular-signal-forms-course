@@ -33,6 +33,7 @@ export class CreateCourseStep1Component {
     required(path.title, { message: 'Title is required.' });
     minLength(path.title, 5, { message: 'Title must be at least 5 characters.' });
     maxLength(path.title, 60, { message: 'Title must be at most 60 characters.' });
+    debounce(path.title, 'blur')
     courseTitleExists(path.title);
 
     required(path.downloadsAllowed, { message: 'You must allow downloads.' });
