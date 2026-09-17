@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { applyWhen, disabled, form, FormField, FormRoot, hidden, max, min, required } from '@angular/forms/signals';
+import { applyWhen, disabled, form, FormField, FormRoot, hidden, max, min, required, validateTree } from '@angular/forms/signals';
 import { FileUploadComponent } from '../../file-upload/file-upload.component';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { STEP2_DEFAULT, Step2Data } from './step2.model';
@@ -23,6 +23,16 @@ export class CreateCourseStep2Component {
 
     hidden(schema.promoStartAt, {when: ({valueOf}) => valueOf(schema.courseType) === 'free'})
     hidden(schema.promoEndAt, {when: ({valueOf}) => valueOf(schema.courseType) === 'free'})
+
+    validateTree(schema, ({ value }) => {
+      const start = value().promoStartAt
+      const end = value().promoEndAt
+      if (start && end && start >= end) {
+        return { 
+          kind: 'promoDateRange', 
+          message: 'Promo start date must be before end date.' }
+      }
+    })
   });
 
 }
