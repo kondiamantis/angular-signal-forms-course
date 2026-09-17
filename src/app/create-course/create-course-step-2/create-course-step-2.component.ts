@@ -24,15 +24,24 @@ export class CreateCourseStep2Component {
     hidden(schema.promoStartAt, {when: ({valueOf}) => valueOf(schema.courseType) === 'free'})
     hidden(schema.promoEndAt, {when: ({valueOf}) => valueOf(schema.courseType) === 'free'})
 
-    validateTree(schema, ({ value }) => {
-      const start = value().promoStartAt
-      const end = value().promoEndAt
-      if (start && end && start >= end) {
-        return { 
-          kind: 'promoDateRange', 
-          message: 'Promo start date must be before end date.' }
+    // 
+
+    applyWhen(
+      schema,
+      ({value}) => value().courseType === 'premium',
+      (schema) => {
+        validateTree(schema, ({ value }) => {
+            const start = value().promoStartAt
+            const end = value().promoEndAt
+            if (start && end && start >= end) {
+              return { 
+                kind: 'promoDateRange', 
+                message: 'Promo start date must be before end date.' }
+            }
+          })
       }
-    })
-  });
+    )
+  }
+);
 
 }
