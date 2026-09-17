@@ -3,6 +3,7 @@ import { applyWhen, disabled, form, FormField, FormRoot, hidden, max, min, requi
 import { FileUploadComponent } from '../../file-upload/file-upload.component';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
 import { STEP2_DEFAULT, Step2Data } from './step2.model';
+import { withDraft } from '../with-draft';
 
 @Component({
   selector: 'create-course-step-2',
@@ -44,4 +45,7 @@ export class CreateCourseStep2Component {
   }
 );
 
+  constructor() {
+    withDraft(this.step2Form, this.step2Model, 'step2');
+  }
 }

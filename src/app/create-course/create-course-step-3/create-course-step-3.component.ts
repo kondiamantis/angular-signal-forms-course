@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { applyEach, form, FormRoot, required, FormField } from '@angular/forms/signals';
 import { Lesson, Step3Data } from './step3.model';
 import { FieldErrorComponent } from '../../field-error/field-error.component';
+import { withDraft } from '../with-draft';
 
 @Component({
   selector: 'create-course-step-3',
@@ -33,5 +34,9 @@ export class CreateCourseStep3Component {
       ...m,
       lessons: m.lessons.filter((_, idx) => idx !== i),
     }));
+  }
+
+  constructor() {
+    withDraft(this.step3Form, this.step3Model, 'step3');
   }
 }

@@ -20,7 +20,16 @@ export class FileUploadComponent implements FormValueControl<string>{
     effect(() => {
       const url = this.uploadResource.value()?.url
       if (url) this.value.set(url);
-    })
+    });
+
+    // Restore a display name when the form draft brings back a URL
+    // without a freshly selected File.
+    effect(() => {
+      const url = this.value();
+      if (url && !this.fileName()) {
+        this.fileName.set(url.split('/').pop() ?? url);
+      }
+    });
   }
 
   private readonly fileData = signal<FormData | null>(null);
